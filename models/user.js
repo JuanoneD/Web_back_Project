@@ -13,6 +13,10 @@ module.exports= (sequelize) => {
             unique:true,
             allowNull:false
         },
+        dataNasc:{
+            type:Sequelize.DATE,
+            allowNull:true
+        },
         password:{
             type:Sequelize.STRING,
             allowNull:false
