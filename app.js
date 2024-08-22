@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json()); /// permite leitura de json 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,4 +39,8 @@ applyDataStructure()
 //         });
 // }
 
+var port = 8080;
+app.listen(port,()=>{
+    console.log('http://localhost:8080/')
+});
 module.exports = app;
