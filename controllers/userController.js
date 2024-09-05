@@ -27,6 +27,18 @@ class UserController{
                 .json({error: 'Ocorreu um erro.'});
         }
     }
+
+    async getByPk(req,res){
+        const Primary_key = req.query;
+        try{
+            const user = await this.userService.getByPk(Primary_key);
+            res.status(200).json(user);
+        }catch(error){
+            res
+                .status(500)
+                .json({error: 'Ocorreu um erro.'});
+        }
+    }
 }
 
 module.exports = UserController;

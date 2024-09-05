@@ -31,6 +31,15 @@ class UserService{
             throw error;
         }
     }
+
+    async getByPk(pk){
+        try{
+            const user = await this.User.findByPk(pk);
+            return user?user:null;
+        }catch(error){
+            throw error;
+        }
+    }
 }
 
 module.exports = UserService;

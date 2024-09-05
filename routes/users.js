@@ -24,4 +24,8 @@ router.post('/novouser', async (req,res)=>{
 router.get('/AllUsers',async(req,res)=>{
   userController.findAllUsers(req,res);
 })
+
+router.get('/GetByPk',async(req,res)=>{
+  userController.getByPk(req,res);
+})
 module.exports = router;
