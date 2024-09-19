@@ -39,6 +39,16 @@ class UserController{
                 .json({error: 'Ocorreu um erro.'});
         }
     }
+
+    async login(req,res){
+        const [email,password] = req.body;
+        try{
+            const User = await this.userService.login(email,password);
+            res.status(200).json(User);
+        }catch(error){
+            res.status(500).json({error:"Erro ao logar!!"});
+        }
+    }
 }
 
 module.exports = UserController;

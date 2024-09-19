@@ -1,6 +1,7 @@
 // ./services/userService.js
 
 const db = require('../models');
+const auth = require('../auth');
 
 class UserService{
     constructor(UserModel){
@@ -38,6 +39,20 @@ class UserService{
             return user?user:null;
         }catch(error){
             throw error;
+        }
+    }
+    async login(email,password){
+        try{
+            const User = await this.User.findOne({
+                where:{email:email}
+            });
+            if(User){
+                User.dataValues.Token = await auth.generateToken(User);
+                User.dataValues.password = '';
+            }
+            return User?User:null
+        }catch(error){
+            throw(error)
         }
     }
 }
