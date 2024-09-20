@@ -29,7 +29,8 @@ class UserController{
     }
 
     async getByPk(req,res){
-        const Primary_key = req.query;
+        const Primary_key = req.query.Pk;
+        console.log(req.query.Pk);
         try{
             const user = await this.userService.getByPk(Primary_key);
             res.status(200).json(user);
@@ -41,7 +42,7 @@ class UserController{
     }
 
     async login(req,res){
-        const [email,password] = req.body;
+        const {email,password} = req.body;
         try{
             const User = await this.userService.login(email,password);
             res.status(200).json(User);
