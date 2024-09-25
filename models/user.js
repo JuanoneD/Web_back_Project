@@ -4,7 +4,7 @@ module.exports= (sequelize) => {
     const User = sequelize.define('User',{
         id:{
             type:Sequelize.INTEGER,
-            autoincrement:true,
+            autoIncrement:true,
             primaryKey:true,
             allowNull:false
         },
