@@ -2,18 +2,14 @@
 
 const db = require('../models');
 const auth = require('../auth');
-<<<<<<< HEAD
 const bcrypt = require('bcrypt');
 
 var round_salts=10;
-=======
->>>>>>> 41bc42a4ccbeb02451cbb21004b836ac51ee3b57
 
 class UserService{
     constructor(UserModel){
         this.User = UserModel;
     }
-<<<<<<< HEAD
     
     async create(email, data_nasc, password){
         try{
@@ -25,18 +21,6 @@ class UserService{
                 password:hash
             });
             return newUser? newUser : null;
-=======
-
-    async create(email, data_nasc, password){
-        try{
-            const newUser = await this.User.create({
-                email:email,
-                dataNasc:data_nasc,
-                password:password
-            });
-            return newUser? newUser : null;
-            
->>>>>>> 41bc42a4ccbeb02451cbb21004b836ac51ee3b57
         }
         catch (error){
             throw error;
@@ -63,25 +47,17 @@ class UserService{
     }
     async login(email,password){
         try{
-<<<<<<< HEAD
             console.log(password);
-=======
->>>>>>> 41bc42a4ccbeb02451cbb21004b836ac51ee3b57
             const User = await this.User.findOne({
                 where:{email:email}
             });
             if(User){
-<<<<<<< HEAD
                 if(await bcrypt.compare(password,User.password)){
                     User.dataValues.Token = await auth.generateToken(User);
                     User.dataValues.password = '';
                 }else{
                     throw new Error("Senha invalida");
                 }
-=======
-                User.dataValues.Token = await auth.generateToken(User);
-                User.dataValues.password = '';
->>>>>>> 41bc42a4ccbeb02451cbb21004b836ac51ee3b57
             }
             return User?User:null
         }catch(error){
