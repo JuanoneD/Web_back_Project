@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 });
 
 //Rota para registrar novo usuário
-router.post('/novouser', async (req,res)=>{
+router.post('/newUser', async (req,res)=>{
   userController.createUser(req,res);
 });
 

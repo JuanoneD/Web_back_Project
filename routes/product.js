@@ -14,4 +14,14 @@ router.get('/', function(req, res, next) {
     res.send('Módulo de Produtos está rodando.');
 });
 
+router.post('/newProduct', async (req,res)=>{
+    productController.createProduct(req,res);
+});
+
+router.get('/allProduct',async(req,res)=>{
+    productController.allProduct(req,res);
+})
+
+router.put('')
+
 module.exports = router;
