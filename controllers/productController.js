@@ -1,23 +1,23 @@
 
 class ProductController{
     constructor(ProductService){
-        this.ProductService = ProductService;
+        this.productService = ProductService;
     }
     async createProduct(req,res){
         const {name,description,price,stock} = req.body;
         try{
-            const newProduct = await this.ProductService.create(name,description,price,stock);
+            const newProduct = await this.productService.createProduct(name,description,price,stock);
             res.status(200).json(newProduct);
         }
         catch(error){
             res
                 .status(500)
-                .json({error: 'Ocorreu um erro ao gravar o novo usuário.'});
+                .json({error: 'Ocorreu um erro ao gravar o novo produto.'});
         }
     }
     async allProduct(req,res){
         try{
-            const allProduct = await this.ProductService.findAll()
+            const allProduct = await this.productService.findAll()
             res.status(200).json(allProduct);
         }catch(error){
             res
@@ -29,7 +29,7 @@ class ProductController{
         try{
             const id = req.query.Pk;
             const {name,description,price,stock} = req.body;
-            const product = await this.ProductService.updateProduct(id,name,description,price,stock);
+            const product = await this.productService.updateProduct(id,name,description,price,stock);
             res.status(200).json(product);
         }catch(error){
             res
@@ -40,7 +40,7 @@ class ProductController{
     async deleteProduct(req,res){
         try{
             const id = req.query.Pk;
-            await this.ProductService.deleteProduct(id);
+            await this.productService.deleteProduct(id);
             res.status(200).json({message:'Deletado com sucesso!'});
         }catch(error){
             res

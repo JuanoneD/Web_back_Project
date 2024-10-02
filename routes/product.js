@@ -8,7 +8,7 @@ const ProductController = require('../controllers/productController');
 const req = require('express/lib/request');
 
 const productService = new ProductService(db.Product);
-const productController = new ProductController(ProductService);
+const productController = new ProductController(productService);
 
 router.get('/', function(req, res, next) {
     res.send('Módulo de Produtos está rodando.');
