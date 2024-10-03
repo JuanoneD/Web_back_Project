@@ -13,6 +13,10 @@ module.exports= (sequelize) => {
         quantity:{
             type:Sequelize.INTEGER,
             allowNull:false
+        },
+        price:{
+            type:Sequelize.FLOAT,
+            allowNull:false
         }
     });
 
