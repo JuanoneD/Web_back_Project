@@ -29,7 +29,9 @@ class UserService{
 
     async findAll(){
         try{
-            const allUsers = await this.User.findAll();
+            const allUsers = await this.User.findAll({
+                attributes:['id','email','dataNasc','createdAt','updatedAt']
+            });
             return allUsers?allUsers:null;
         }
         catch(error){

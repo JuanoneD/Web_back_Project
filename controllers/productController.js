@@ -27,10 +27,10 @@ class ProductController{
     }
     async updateProduct(req,res){
         try{
-            const id = req.query.Pk;
+            const id = req.query.id;
             const {name,description,price,stock} = req.body;
-            const product = await this.productService.updateProduct(id,name,description,price,stock);
-            res.status(200).json(product);
+            await this.productService.updateProduct(id,name,description,price,stock);
+            res.status(200).json({message:"Atualizado com sucesso!!"});
         }catch(error){
             res
                 .status(500)
@@ -39,7 +39,7 @@ class ProductController{
     }
     async deleteProduct(req,res){
         try{
-            const id = req.query.Pk;
+            const id = req.query.id;
             await this.productService.deleteProduct(id);
             res.status(200).json({message:'Deletado com sucesso!'});
         }catch(error){

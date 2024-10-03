@@ -10,18 +10,20 @@ const req = require('express/lib/request');
 const productService = new ProductService(db.Product);
 const productController = new ProductController(productService);
 
-router.get('/', function(req, res, next) {
-    res.send('Módulo de Produtos está rodando.');
-});
-
-router.post('/newProduct', async (req,res)=>{
+router.post('/', async (req,res)=>{
     productController.createProduct(req,res);
 });
 
-router.get('/allProduct',async(req,res)=>{
+router.get('/',async(req,res)=>{
     productController.allProduct(req,res);
 })
 
-router.put('')
+router.put('/',async(req,res)=>{
+    productController.updateProduct(req,res);
+})
+
+router.delete('/',async(req,res)=>{
+    productController.deleteProduct(req,res);
+})
 
 module.exports = router;
