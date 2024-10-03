@@ -22,7 +22,7 @@ module.exports= (sequelize) => {
 
     CartProduct.belongsTo(Cart,{
         constraint: true,
-        foreignKey: 'IdCard'
+        foreignKey: 'IdCart'
     });
 
     CartProduct.belongsTo(Product,{

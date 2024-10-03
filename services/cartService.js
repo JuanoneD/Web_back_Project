@@ -13,7 +13,7 @@ class CartService{
             let product = await this.Product.findByPk(IdProduct);
 
             currentCart = currentCart?currentCart: await this.Cart.create({totalPrice:0,IdUser:IdUser});
-            await this.CartProduct.create({IdProduct:IdProduct,IdCard:currentCart.id,quantity:quantity,price:product.price*quantity});
+            await this.CartProduct.create({IdProduct:IdProduct,IdCart:currentCart.id,quantity:quantity,price:product.price*quantity});
 
             currentCart = await this.Cart.update({
                 totalPrice:currentCart.totalPrice + product.price*quantity
@@ -21,6 +21,7 @@ class CartService{
             return {currentCart,product};
         }
         catch (error){
+            console.log(error);
             throw error;
         }
     }
@@ -29,16 +30,15 @@ class CartService{
             let currentCart = await this.Cart.findOne({where:{IdUser:IdUser}});
             let currentCartProduct = await this.CartProduct.findOne({where:{IdProduct:IdProduct,IdCart:currentCart.id}});
             
-            currentCart = await this.Cart.update({
+            await this.Cart.update({
                 totalPrice:currentCart.totalPrice - currentCartProduct.price
             },{where:{id:currentCart.id}});
 
             await this.CartProduct.destroy({
-                where:{IdProduct:IdProduct,IdCart:currentCart.id}
+                where:{id:currentCartProduct.id}
             });
-
-            return currentCart;
         }catch (error){
+            console.log(error);
             throw error;
         }
     }
@@ -48,6 +48,7 @@ class CartService{
             let allProducts = await this.CartProduct.findAll({where:{IdCart:currentCart.id}});
             return {currentCart,allProducts};
         }catch(error){
+            console.log(error);
             throw error;
         }
     }

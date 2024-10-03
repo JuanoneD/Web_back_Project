@@ -19,12 +19,12 @@ class CartController{
         try{
             const {IdProduct}= req.body;
             const IdUser = req.user.id;
-            const cart = await this.cartService.removeCart(IdProduct,IdUser);
-            res.status(200).json(cart);
+            await this.cartService.removeCart(IdProduct,IdUser);
+            res.status(200).json({message:"Deletado com sucesso!!"});
         }catch(error){
             res
                 .status(500)
-                .json({error: 'Ocorreu um erro ao deletar o novo produto no carrinho.'});
+                .json({error: 'Ocorreu um erro ao deletar o produto do carrinho.'});
         }
     }
     async GetCart(req,res){
@@ -40,3 +40,5 @@ class CartController{
     }
     
 }
+
+module.exports = CartController;

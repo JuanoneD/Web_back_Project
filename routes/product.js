@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const db =require('../models');
-const auth = require('../auth');
 
 const ProductService = require('../services/productService');
 const ProductController = require('../controllers/productController');
