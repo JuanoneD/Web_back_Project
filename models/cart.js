@@ -18,7 +18,8 @@ module.exports= (sequelize) => {
 
     Cart.belongsTo(User,{
         constraint: true,
-        foreignKey: 'IdUser'
+        foreignKey: 'IdUser',
+        onDelete: 'CASCADE'
     })
     return Cart;
 }

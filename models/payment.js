@@ -20,9 +20,10 @@ module.exports= (sequelize) => {
         }
     });
 
-    Cart.belongsTo(User,{
+    Payment.belongsTo(User,{
         constraint: true,
         foreignKey: 'IdUser'
     })
-    return Cart;
+    return Payment
 }
+

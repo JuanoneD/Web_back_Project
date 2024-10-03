@@ -22,7 +22,8 @@ module.exports= (sequelize) => {
 
     CartProduct.belongsTo(Cart,{
         constraint: true,
-        foreignKey: 'IdCart'
+        foreignKey: 'IdCart',
+        onDelete: 'CASCADE'
     });
 
     CartProduct.belongsTo(Product,{
