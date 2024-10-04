@@ -1,5 +1,4 @@
 const { where } = require("sequelize");
-const cart = require("../models/cart");
 
 class CartService{
     constructor(CartModel,CartProductModel,ProductModel){
@@ -9,6 +8,10 @@ class CartService{
     }
     async addCart(IdProduct,IdUser,quantity){
         try{
+            quantity = Math.round(quantity);
+            if(quantity<0){
+                return {message:"Valor invalido para Quantidade"}
+            };
             let currentCart = await this.Cart.findOne({where:{IdUser:IdUser}});
             let product = await this.Product.findByPk(IdProduct);
 

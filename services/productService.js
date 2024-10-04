@@ -9,6 +9,9 @@ class ProductService{
 
     async createProduct(name,description,price,stock){
         try{
+            if(stock<0){
+                return {message:"Valor de estoque invalido"}
+            };
             const newProduct = await this.Product.create({
                 name:name,
                 description:description,
