@@ -3,17 +3,17 @@ const db = require('../models');
 
 
 class PaymentService{
-    constructor(PaymentModel,CartModel,CartProductModel){
+    constructor(PaymentModel,CartModel,CartProductModel,CartProduct){
         this.payment = PaymentModel;
         this.cart = CartModel;
         this.cartProduct = CartProductModel;
         this.product = CartProduct;
     }
 
-    async payment(idUser,paymentType){
+    async create(idUser,paymentType){
         try{
             let currentCart = await this.cart.findOne({where:{IdUser:idUser}})
-            let productList = await this.cartProduct.findAll({where:{IdCard:currentCart.id}})
+            let productList = await this.cartProduct.findAll({where:{IdCart:currentCart.id}})
     
             productList.map(async (item)=>{
                 let currentProduct = await this.product.findOne({where:{id:item.IdProduct}})
@@ -47,9 +47,9 @@ class PaymentService{
     }
     async getPayment(idPayment,idUser){
         try{
-            let currentPayment = await this.payment.findbyPk(idPayment)
+            let currentPayment = await this.payment.findByPk(idPayment);
 
-            if(currentPayment.IdUser !== idUser){
+            if(currentPayment.IdUser !== parseInt(idUser)){
                 return {message:"Acesso não atorizado a esse usuario"}
             }
 

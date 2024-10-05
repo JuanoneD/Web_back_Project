@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
 var cartRouter = require('./routes/cart');
+var paymentRouter = require('./routes/payment');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products',productRouter);
 app.use('/cart',cartRouter);
+app.use('/payment',paymentRouter)
 
 var db = require('./models');
 
