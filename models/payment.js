@@ -1,3 +1,4 @@
+const { type } = require("express/lib/response");
 const Sequelize = require("sequelize");
 
 
@@ -15,6 +16,10 @@ module.exports= (sequelize) => {
             allowNull:false
         },
         status:{
+            type:Sequelize.STRING,
+            allowNull:false
+        },
+        paymentMethods:{
             type:Sequelize.STRING,
             allowNull:false
         }

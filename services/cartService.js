@@ -9,11 +9,12 @@ class CartService{
     async addCart(IdProduct,IdUser,quantity){
         try{
             quantity = Math.round(quantity);
-            if(quantity<0){
-                return {message:"Valor invalido para Quantidade"}
-            };
             let currentCart = await this.Cart.findOne({where:{IdUser:IdUser}});
             let product = await this.Product.findByPk(IdProduct);
+            
+            if(quantity<0 || product.stock < quantity){
+                return {message:"Valor invalido para Quantidade"}
+            };
 
             currentCart = currentCart?currentCart: await this.Cart.create({totalPrice:0,IdUser:IdUser});
             await this.CartProduct.create({IdProduct:IdProduct,IdCart:currentCart.id,quantity:quantity,price:product.price*quantity});

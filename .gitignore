@@ -1,6 +1,3 @@
 /node_modules/*
 
-#Criar banco no MySql:
-CREATE USER 'juan'@'localhost' IDENTIFIED BY 'juan';
-GRANT ALL PRIVILEGES ON * . * TO 'juan'@'localhost';
-create database juan;
+
