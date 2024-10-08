@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 var sequelize = require('./models').sequelize;
 var user = require('./models/user')(sequelize);
@@ -15,6 +16,7 @@ var paymentRouter = require('./routes/payment');
 
 var app = express();
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json()); /// permite leitura de json 
 app.use(express.urlencoded({ extended: false }));

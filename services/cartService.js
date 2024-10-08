@@ -49,7 +49,7 @@ class CartService{
     async getCart(IdUser){
         try{
             let currentCart = await this.Cart.findOne({where:{IdUser:IdUser}});
-            let allProducts = await this.CartProduct.findAll({where:{IdCart:currentCart.id}});
+            let allProducts = await this.CartProduct.findAll({where:{IdCart:currentCart.id},include:{model:this.Product,require:true}});
             return {currentCart,allProducts};
         }catch(error){
             console.log(error);
