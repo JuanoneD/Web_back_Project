@@ -21,7 +21,7 @@ class CartService{
                     quantity: thisCard.quantity+quantity,
                     price: thisCard.price+(quantity*product.price)
                 },{where:{id:thisCard.id}})
-                return {cardP}
+                return {currentCart}
             }
             
             await this.CartProduct.create({IdProduct:IdProduct,IdCart:currentCart.id,quantity:quantity,price:product.price*quantity});
