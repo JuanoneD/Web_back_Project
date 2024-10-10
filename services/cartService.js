@@ -17,10 +17,11 @@ class CartService{
             currentCart = currentCart?currentCart: await this.Cart.create({totalPrice:0,IdUser:IdUser});
             let thisCard = await this.CartProduct.findOne({where:{IdCart:currentCart.id,IdProduct:IdProduct}})
             if(thisCard){
-                let cardP =  await this.CartProduct.update({
+                await this.CartProduct.update({
                     quantity: thisCard.quantity+quantity,
                     price: thisCard.price+(quantity*product.price)
                 },{where:{id:thisCard.id}})
+                currentCart = await this.Cart.update({totalPrice:currentCart.totalPrice+(quantity*product.price)},{where:{id:currentCart.id}})
                 return {currentCart}
             }
             
