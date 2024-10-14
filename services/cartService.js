@@ -21,7 +21,7 @@ class CartService{
                     quantity: thisCard.quantity+quantity,
                     price: thisCard.price+(quantity*product.price)
                 },{where:{id:thisCard.id}})
-                currentCart = await this.Cart.update({totalPrice:currentCart.totalPrice+(quantity*product.price)},{where:{id:currentCart.id}})
+                await this.Cart.update({totalPrice:currentCart.totalPrice+(quantity*product.price)},{where:{id:currentCart.id}})
                 return {currentCart}
             }
             

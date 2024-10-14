@@ -23,6 +23,9 @@ async function verifyToken(req,res,next){
             return res.status(401).json({message:"Token invalido"});
         }
         req.user = decoded;
+        if(!next){
+            return res.status(200).json({message:"Token Autorizado!"})
+        }
         next();
     });
 }

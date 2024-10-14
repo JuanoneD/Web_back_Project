@@ -34,4 +34,7 @@ router.get('/GetByPk',async(req,res)=>{
 router.post('/login',async(req,res)=>{
   userController.login(req,res);
 });
+
+router.get('/verifyToken',auth.verifyToken);
+
 module.exports = router;
