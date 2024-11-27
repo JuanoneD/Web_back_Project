@@ -42,7 +42,11 @@ class CartService{
         try{
             let currentCart = await this.Cart.findOne({where:{IdUser:IdUser}});
             let currentCartProduct = await this.CartProduct.findOne({where:{IdProduct:IdProduct,IdCart:currentCart.id}});
-            
+
+            if(!currentCartProduct){
+                return false;
+            }
+
             await this.Cart.update({
                 totalPrice:currentCart.totalPrice - currentCartProduct.price
             },{where:{id:currentCart.id}});

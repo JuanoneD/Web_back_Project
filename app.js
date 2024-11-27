@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
 var cartRouter = require('./routes/cart');
 var paymentRouter = require('./routes/payment');
+var suppliersRouter = require('./routes/suppliers');
 
 var app = express();
 
@@ -27,7 +28,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products',productRouter);
 app.use('/cart',cartRouter);
-app.use('/payment',paymentRouter)
+app.use('/payment',paymentRouter);
+app.use('/suppliers',suppliersRouter);
 
 var db = require('./models');
 
