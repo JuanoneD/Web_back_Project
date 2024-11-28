@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
 
+const Sequelize = require("sequelize");
 module.exports= (sequelize) => { 
-    const Suppliers  = sequelize.define('suppliers',{
+    const Suppliers  = sequelize.define('Suppliers',{
         id:{
             type:Sequelize.INTEGER,
             autoIncrement:true,
@@ -13,6 +13,5 @@ module.exports= (sequelize) => {
             allowNull:false
         }
     });
-
     return Suppliers;
 }

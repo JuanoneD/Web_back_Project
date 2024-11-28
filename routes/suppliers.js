@@ -7,7 +7,7 @@ const auth = require('../auth');
 const SupplierService = require('../services/suppliersService');
 const SupplierController = require('../controllers/supplierController');
 
-const supplierService = new SupplierService(db.Supplier);
+const supplierService = new SupplierService(db.Suppliers);
 const supplierController = new SupplierController(supplierService);
 
 router.post('/',auth.verifyToken,async (req,res)=>{

@@ -7,7 +7,7 @@ class SuppliersService{
         this.suppliers = SuppliersModel;
     }
 
-    async create(name){
+    async createSuppliers(name){
         try{
             let newSupliers = await this.suppliers.create({
                 name:name
@@ -20,7 +20,7 @@ class SuppliersService{
     }
     async getAllSupliers(){
         try{
-            let allSuppliers = await this.suppliers.findAll(idPayment);
+            let allSuppliers = await this.suppliers.findAll();
             return allSuppliers?allSuppliers:null
 
         }catch(err){

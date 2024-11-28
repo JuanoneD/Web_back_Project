@@ -7,7 +7,7 @@ class SupplierController{
     async createSuppliers(req,res){
         const {name} = req.body;
         try{
-            const newSuplier = await this.supplierService.create(name);
+            const newSuplier = await this.supplierService.createSuppliers(name);
             res.status(200).json(newSuplier);
         }
         catch(error){
